@@ -30,6 +30,8 @@ function displayTemp(response) {
   let city = document.querySelector("#city");
   city.innerHTML = response.data.city;
 
+  celTemp = response.data.temperature.current;
+
   let description = document.querySelector("#description");
   description.innerHTML = response.data.condition.description;
 
@@ -65,6 +67,18 @@ function submitCity(event) {
   search(cityInput.value);
 }
 
-search("London");
+function showFar(event) {
+  event.preventDefault();
+  let farValue = Math.round((celTemp * 9) / 5 + 32);
+  let temp = document.querySelector("#main-temp");
+  temp.innerHTML = farValue;
+}
+let celTemp = null;
+
+let farLink = document.querySelector("#far-link");
+farLink.addEventListener("click", showFar);
+
 let form = document.querySelector("#search-form");
 form.addEventListener("submit", submitCity);
+
+search("London");
