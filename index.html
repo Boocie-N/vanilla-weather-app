@@ -10,6 +10,7 @@
       integrity="sha384-KK94CHFLLe+nY2dmCWGMq91rCGa5gtU4mk92HdvYe+M/SXH301p5ILy+dN9+nJOZ"
       crossorigin="anonymous"
     />
+    <script src="https://unpkg.com/axios@1.1.2/dist/axios.min.js"></script>
     <link rel="stylesheet" href="src/style.css" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -45,18 +46,21 @@
         </form>
 
         <div class="row">
-          <h1>Pretoria</h1>
+          <h1 id="city"></h1>
           <ul>
-            <li>Friday <span>15:00</span></li>
-            <li>Sunny</li>
+            <li id="day">Friday <span id="time">15:00</span></li>
+            <li id="description">Sunny</li>
           </ul>
         </div>
         <div class="row">
           <div class="col-6">
             <ul class="stats">
-              <li>Precipitation: <span class="precipitation">20</span>%</li>
-              <li>Humidity: <span class="humidity">2</span>%</li>
-              <li>Wind: <span class="wind">3</span>km/h</li>
+              <li>
+                Feels like:
+                <span class="real-feel" id="real-feel">20</span>°C
+              </li>
+              <li>Humidity: <span class="humidity" id="humidity">2</span>%</li>
+              <li>Wind: <span class="wind" id="wind-speed">3</span>km/h</li>
             </ul>
           </div>
           <div class="col-6">
@@ -67,7 +71,7 @@
                 width="80px"
               />
               <div>
-                <span class="main-temp">32</span
+                <span class="main-temp" id="main-temp">32</span
                 ><span class="units">°C | <a href="#"> °F</a></span>
               </div>
             </div>
