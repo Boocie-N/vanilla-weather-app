@@ -35,9 +35,13 @@ h3 {
   margin-top: 32px;
 }
 
+a {
+  text-decoration: none;
+}
 .weather-app {
   max-width: 800px;
   margin: 40px auto;
+  margin-bottom: 2px;
   border: 2px solid #dadde1;
   padding: 20px;
   border-radius: 10px;
@@ -60,6 +64,18 @@ h3 {
   font-size: 20px;
   font-weight: bold;
   padding-left: 15px;
+  text-decoration: none;
+}
+
+.weather-temperature .selected {
+  color: black;
+  cursor: default;
+  text-decoration: none;
+}
+
+.weather-temperature .selected:hover {
+  text-decoration: none;
+  color: #ffc400b1;
 }
 
 .stats {

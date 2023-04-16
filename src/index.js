@@ -30,7 +30,7 @@ function displayTemp(response) {
   let city = document.querySelector("#city");
   city.innerHTML = response.data.city;
 
-  celTemp = response.data.temperature.current;
+  celTemp = Math.round(response.data.temperature.current);
 
   let description = document.querySelector("#description");
   description.innerHTML = response.data.condition.description;
@@ -67,16 +67,30 @@ function submitCity(event) {
   search(cityInput.value);
 }
 
+function showCel(event) {
+  event.preventDefault();
+  farLink.classList.remove("selected");
+  celLink.classList.add("selected");
+  let temp = document.querySelector("#main-temp");
+  temp.innerHTML = celTemp;
+}
+
 function showFar(event) {
   event.preventDefault();
+  celLink.classList.remove("selected");
+  farLink.classList.add("selected");
   let farValue = Math.round((celTemp * 9) / 5 + 32);
   let temp = document.querySelector("#main-temp");
   temp.innerHTML = farValue;
 }
+
 let celTemp = null;
 
 let farLink = document.querySelector("#far-link");
 farLink.addEventListener("click", showFar);
+
+let celLink = document.querySelector("#cel-link");
+celLink.addEventListener("click", showCel);
 
 let form = document.querySelector("#search-form");
 form.addEventListener("submit", submitCity);
