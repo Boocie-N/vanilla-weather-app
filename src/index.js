@@ -76,29 +76,32 @@ function showForecast(response) {
   let forecast = document.querySelector("#forecast");
 
   let forecastHTML = `<div class="row">`;
-  forecastElement.forEach(function (forecastedday) {
-    forecastHTML =
-      forecastHTML +
-      `
-  <div class="col-2 daily">
-              <h4>${formattedDay(forecastedday.time)}</h4>
-              <img
-              class="weather-icon"
-              src="http://shecodes-assets.s3.amazonaws.com/api/weather/icons/${
-                forecastedday.condition.icon
-              }.png"
+
+  forecastElement.forEach(function (forecastedday, index) {
+    if (index < 6) {
+      forecastHTML =
+        forecastHTML +
+        `
+      <div class="col-2 daily">
+      <h4>${formattedDay(forecastedday.time)}</h4>
+      <img
+      class="weather-icon"
+      src="http://shecodes-assets.s3.amazonaws.com/api/weather/icons/${
+        forecastedday.condition.icon
+      }.png"
               alt="sunny"
                 width="60px"
                 />
-              <p>
+                <p>
                 <strong>${Math.round(
                   forecastedday.temperature.maximum
                 )}<span>°</span></strong> ${Math.round(
-        forecastedday.temperature.minimum
-      )}<span>°</span>
-                </p>
-                </div>
-                `;
+          forecastedday.temperature.minimum
+        )}<span>°</span>
+        </p>
+        </div>
+        `;
+    }
   });
   forecastHTML = forecastHTML + `</div>`;
   forecast.innerHTML = forecastHTML;
