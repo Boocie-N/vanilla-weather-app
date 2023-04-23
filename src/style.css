@@ -1,5 +1,5 @@
 body {
-  font-family: "Schibsted Grotesk", sans-serif;
+  font-family: "Lato", sans-serif;
 }
 form {
   margin-bottom: 30px;
@@ -15,6 +15,9 @@ ul {
 }
 li {
   list-style: none;
+}
+
+li:first-letter {
   text-transform: capitalize;
 }
 strong {
