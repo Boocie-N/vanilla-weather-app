@@ -63,6 +63,14 @@ function displayTemp(response) {
   requestForecast(response.data.coordinates);
 }
 
+function formattedDay(timestamp) {
+  let date = new Date(timestamp * 1000);
+  let day = date.getDay();
+  let days = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
+
+  return days[day];
+}
+
 function showForecast(response) {
   let forecastElement = response.data.daily;
   let forecast = document.querySelector("#forecast");
@@ -73,15 +81,21 @@ function showForecast(response) {
       forecastHTML +
       `
   <div class="col-2 daily">
-              <h4>${forecastedday.time}</h4>
+              <h4>${formattedDay(forecastedday.time)}</h4>
               <img
               class="weather-icon"
-              src="http://shecodes-assets.s3.amazonaws.com/api/weather/icons/${forecastedday.condition.icon}.png"
+              src="http://shecodes-assets.s3.amazonaws.com/api/weather/icons/${
+                forecastedday.condition.icon
+              }.png"
               alt="sunny"
                 width="60px"
                 />
               <p>
-                <strong>${forecastedday.temperature.maximum}<span>°</span></strong> ${forecastedday.temperature.minimum}<span>°</span>
+                <strong>${Math.round(
+                  forecastedday.temperature.maximum
+                )}<span>°</span></strong> ${Math.round(
+        forecastedday.temperature.minimum
+      )}<span>°</span>
                 </p>
                 </div>
                 `;
